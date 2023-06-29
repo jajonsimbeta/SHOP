@@ -26,7 +26,7 @@ function App() {
 
       </div>
       <div className="container flex justify-between text-justify">
-        <div className="w-1/3 border-solid border-gray-300  mr-10 border rounded-md hover:border-gray-500 cursor-pointer">
+        <div className="w-1/3 border-solid border-gray-300  mr-10 border rounded-md hover:border-gray-500 cursor-pointer transition-all duration-1000 ease-linear">
             <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" className="mx-auto" />
             <h4>상품명</h4>
             <p>상품정보</p>
