@@ -1,51 +1,39 @@
 import './App.css';
+import data from './data';
+import Detail from './pages/detail'
+import Home from './pages/Home'
+import Event from './pages/Event'
 import { useState } from 'react';
-import data from './data'
+import { Route, Link ,Routes, Outlet } from 'react-router-dom';
 function App() {
-  let [shoes, setstate] = useState(data);
-  
+  let [shoes] = useState(data);
   return (
     <div className="App font-NotoSansKR">
       <header className="bg-gray-950 text-gray-300 drop-shadow-md">
         <nav className="flex px-5 py-3  justify-between items-center">
-          <h1 className="font-medium text-1xl bg-slate-800 rounded-lg px-3">Shop</h1>
+          <h1 className="font-medium text-1xl bg-slate-800 rounded-lg py-2 px-5 text-rose-500">Shoes Shop</h1>
           <nav>
-            <ul className="flex text-xs">
-              <li className='px-2 py-2'><a href="#">HOME</a></li>
-              <li className='px-2 py-2'><a href="#">Features</a></li>
-              <li className='px-2 py-2'><a href="#">Pricing</a></li>
+            <ul className="flex text-base">
+              <li className='px-2 py-2'><Link to="/">Home</Link></li>
+              <li className='px-2 py-2'><Link to="/Detail">Detail</Link></li>
+              <li className='px-2 py-2'><Link to="/Event">Event</Link></li>
             </ul>
           </nav>
         </nav>
       </header>
 
-      <div className="w-full aspect-video bg-center bg-contain bg-no-repeat bg-[url('./img/bg.jpg')] px-6 py-5 font-extrabold text-gray-300 text-2xl" >
-        <h2>Shoes Shop</h2>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home shoes={shoes}/>} />
+        <Route path="/Detail/:id" element={<Detail shoes={shoes}/>}/>
+        <Route path="/Event" element={<Event />} >
+          <Route path="1" element={<p>첫 주무시 양배추즙 서비스 <Outlet></Outlet></p>}>
+            <Route path="a" element={<p>a</p>}></Route>
+          </Route>
+          <Route path="2" element={<p>생일기념 쿠폰받기</p>}></Route>
+        </Route>
+        <Route path="*" element={<div>페이지가 없어요</div>} />
+      </Routes>
 
-      <div className="container flex justify-between text-center px-4">
-        {
-          shoes.map((a,i)=>{ 
-            return(
-              <Card shoes={shoes[i]} id={i+1} key={i} />
-            )
-          })
-        
-        } 
-      </div>
-    </div>
-  );
-}
-
-
-
-
-function Card(props) {
-  return (
-    <div className="border-solid border-gray-300 last:mr-0  mr-2 border rounded-md hover:border-gray-500 cursor-pointer transition-all duration-300 linear py-4 ">
-        <img src={'https://codingapple1.github.io/shop/shoes'+props.id+'.jpg'} width="80%" className="mx-auto" />
-        <h4 className="text-base text-blue-950">{props.shoes.title}</h4>
-        <p class="text-sm text-gray-500">{props.shoes.price}</p>
     </div>
   );
 }
