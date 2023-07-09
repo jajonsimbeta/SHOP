@@ -6,7 +6,7 @@ import Event from './pages/Event'
 import { useState } from 'react';
 import { Route, Link ,Routes, Outlet } from 'react-router-dom';
 function App() {
-  let [shoes] = useState(data);
+  let [shoes,setShoes] = useState(data);
   return (
     <div className="App font-NotoSansKR">
       <header className="bg-gray-950 text-gray-300 drop-shadow-md">
@@ -23,7 +23,7 @@ function App() {
       </header>
 
       <Routes>
-        <Route path="/" element={<Home shoes={shoes}/>} />
+        <Route path="/" element={<Home shoes={shoes} setShoes={setShoes} id={shoes.id+1}/>} />
         <Route path="/Detail/:id" element={<Detail shoes={shoes}/>}/>
         <Route path="/Event" element={<Event />} >
           <Route path="1" element={<p>첫 주무시 양배추즙 서비스 <Outlet></Outlet></p>}>
@@ -33,7 +33,6 @@ function App() {
         </Route>
         <Route path="*" element={<div>페이지가 없어요</div>} />
       </Routes>
-
     </div>
   );
 }

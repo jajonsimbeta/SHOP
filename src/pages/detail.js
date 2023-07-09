@@ -26,7 +26,7 @@ function Detail(probs){
             </div>
             <div className="md:flex justify-between">
                 <div className="aspect-auto">
-                    <img src={'https://codingapple1.github.io/shop/shoes'+outPutId.id+'.jpg'}  className="mx-auto" width="100%"/>
+                    <img src={'https://codingapple1.github.io/shop/shoes'+imgId+'.jpg'}  className="mx-auto" width="100%"/>
                 </div>
                 <div className="px-8 w-1/2">
                     <div className="font-semibold text-3xl text-sky-950">{outPutId.title}</div>
